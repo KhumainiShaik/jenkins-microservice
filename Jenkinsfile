@@ -1,11 +1,11 @@
 pipeline{
     agent { 
-        docker { image 'maven:3.6.3'}
+        docker { image 'node:22.11.0-alpine3.20' }
     }
     stages{
         stage('Build'){
             steps {
-                sh 'mvn --version'
+                sh 'node --eval "console.log(process.platform,process.env.CI)"'
                 echo "Build"
             }
         }
